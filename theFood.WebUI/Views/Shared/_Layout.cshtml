@@ -1,0 +1,170 @@
+﻿@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="~/Content/MainStyle/Main.css" rel="stylesheet"/>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Cart.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/GenerateViewRecipe.js")"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+<div class="header">
+    <div class="title">theFood</div>
+
+    <div align="right" class="search">
+        @using (Html.BeginForm("Search", "Search", FormMethod.Post, new {enctype = "multipart/form-data"}))
+        {
+            <input type="text" id="searchField" name="searchValue" placeholder="Search" required=""/>
+            <input type="submit" value="Find"/>
+        }
+    </div>
+</div>
+<div align="right" class="cart">
+    <p >@Html.ActionLink("Yours cart", "YourCart", "Cart")</p>
+    <form method="post" id="clearCartButton" action="@Url.Action("ClearCart", "Cart")">
+        <input type="submit" value="Clear"/>
+    </form>
+    <div id="cartPanel">@{Html.RenderAction("Index", "Cart");}</div>
+
+</div>
+
+<div align="center" class="content">
+    @RenderBody()
+
+</div>
+<br/>
+
+<br/>
+<br/>
+
+<form method="post" id="searchRecipeButton" action="@Url.Action("SearchRecipe", "Recipe")">
+    <input type="submit" value="To Recipe"/>
+</form>
+
+
+<div align="center" class="Resipes" id="listRecipes">
+    @{Html.RenderAction("Recipe", "Recipe");}
+</div>
+
+</body>
+</html>*@
+
+<!---------------------------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <title>theFood</title>
+    
+    <meta charset="utf-8" />
+   
+    <link href="~/Content/MainStyle/Main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Cart.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Search.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/GenerateViewRecipe.js")"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <!-- begin header -->
+    <header class="header">
+
+        <div class="logo">
+            <a href="/">
+                <img src="~/Content/images/logotheFood.png" class="imgLogo" alt="theFood">
+            </a>
+        </div>
+
+        <div class="nav">
+            <a href="@Url.Action("Login", "Account")" class="imguser">
+                <img src="~/Content/images/user.png" class="imguser" alt="user">
+            </a>
+        </div>
+
+        <div id="headerInner">
+        </div>
+</header><!-- end header -->
+
+    <!-- begin wrapper -->
+    <section id="wrapper">
+  
+        @using (Html.BeginForm("Search", "Search", FormMethod.Post, new { id = "search" }))
+        {
+            <input type="text" name="searchValue" value="Search" onblur=" if (this.value == '') this.value = 'Search'; " onfocus=" if (this.value == 'Search') this.value = ''; " class="input " />
+            <input type="submit" name="" value="" class="submit" />
+        }
+        <div id="middle">
+            <!--begin middle-->
+            <div id="content">
+                <!-- begin contener-->
+
+                <div class="container">
+                 
+                    <div class="row">
+                        <div class="span12">
+                            <!--begin imgforkAndSpoon-->
+                            <div class="imgforkAndSpoon">
+                                <div class="imgfork">
+                                    <img src="~/Content/images/fork.png" alt="fork">
+                                </div>
+                                <div class="imgspoon">
+                                    <img src="~/Content/images/spoon.png" alt="spoon">
+                                </div>
+                            </div><!--end imgforkAndSpoon-->
+                            <div class="well1">
+
+
+
+                                @RenderBody()
+
+
+
+
+
+                            </div><!--/well-->
+
+                        </div>
+                    </div>
+                </div>
+             
+            </div><!-- end content -->
+            <div class="controllist" id="ext">
+
+                <form action="" method="post" id="listbuttom">
+                    <input type="submit" name="" value="" class="imglistbutton" />
+                </form>
+
+                <form action="" method="post" id="cellListbuttom">
+                    <input type="submit" name="" value="" class="imgcellListbutton" />
+                </form>
+
+            </div>
+            <div id="listRecipes" class="listRecipes">
+                @{Html.RenderAction("Recipe", "Recipe");}
+            </div><!--end listRecipes-->
+
+            <form action="" method="post" id="nextRecipeButton">
+                <input type="submit" name="" value="" class="nextLoadRecipeButton" />
+            </form>
+
+        </div><!-- end middle -->
+    </section><!-- end wrapper -->
+    <!-- begin footer -->
+
+    <footer id="footer">
+        <div class="footerTop"></div>
+        <div id="footerInner">
+
+        </div><!-- end footerInner -->
+    </footer><!-- end footer -->
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E86AF765-3A83-4E97-B2A2-C3A133AA9819}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>theFood.Domain</RootNamespace>
+    <AssemblyName>theFood.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\ICart.cs" />
+    <Compile Include="Abstract\ICategoryProduct.cs" />
+    <Compile Include="Abstract\ICategoryRecipe.cs" />
+    <Compile Include="Abstract\IEatTime.cs" />
+    <Compile Include="Abstract\IIngridient.cs" />
+    <Compile Include="Abstract\IProduct.cs" />
+    <Compile Include="Abstract\IRecipe.cs" />
+    <Compile Include="Abstract\IUser.cs" />
+    <Compile Include="Concrete\CategoryProductRepository.cs" />
+    <Compile Include="Concrete\IngridientRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
+    <Compile Include="DbModel\CategoryProduct.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CategoryRecipe.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Comment.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\CategoryRecipeRepository.cs" />
+    <Compile Include="Concrete\EatTimeRepository.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Concrete\RecipeRepository.cs" />
+    <Compile Include="DbModel\EatingTime.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ingridient.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Model_theFoodDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_theFoodDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Model_theFoodDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_theFoodDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Picture.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Product.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Concrete\CartRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbModel\Recipe.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Subscriber.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\theFoodDb_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>theFoodDb_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\theFoodDb_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\User.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\UserFavoritRecipe.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\UserPost.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\UserRecipe.cs">
+      <DependentUpon>theFoodDb_Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="DbModel\Model_theFoodDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_theFoodDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbModel\Model_theFoodDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model_theFoodDb.cs</LastGenOutput>
+      <DependentUpon>Model_theFoodDb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="DbModel\theFoodDb_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>theFoodDb_Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model_theFoodDb.edmx</DependentUpon>
+    </None>
+    <None Include="DbModel\theFoodDb_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>theFoodDb_Model.cs</LastGenOutput>
+      <DependentUpon>Model_theFoodDb.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbModel\Model_theFoodDb.edmx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

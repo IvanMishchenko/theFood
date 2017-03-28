@@ -1,0 +1,43 @@
+﻿@using System.Linq
+@using Castle.Core.Internal
+@model theFood.WebUI.Models.ProductModel
+@{
+    ViewBag.Title = "Product: " + Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+
+@using (Html.BeginForm("EditProduct", "Admin", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorForModel()
+   
+    <div>
+        <h4>
+            Category: @Html.DropDownList("categoryId", Model.CategoryProducts)
+        </h4>
+    </div>
+    <br/>
+
+    <div class="editor-label">Image</div>
+    <div class="editor-field">
+        
+        @if (Model.ImageData == null)
+        {
+            @:None
+        }
+        else
+        {
+            <img width="150" height="150" src="@Url.Action("GetImage", "Admin", new {Model.Id})"/>
+        }
+        <div>Upload new image:
+            <input type="file" name="Image"/>
+        </div>
+    </div>
+    
+
+    <input type="submit" value="Save"/>
+    @Html.ActionLink("Cancel", "Product","Admin");
+}

@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model_theFoodDb.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model_theFoodDbStoreContainer">
+    <EntitySet Name="UserSet" EntityType="Model_theFoodDb.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecipeSet" EntityType="Model_theFoodDb.Store.RecipeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryRecipeSet" EntityType="Model_theFoodDb.Store.CategoryRecipeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EatingTimeSet" EntityType="Model_theFoodDb.Store.EatingTimeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CommentSet" EntityType="Model_theFoodDb.Store.CommentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSet" EntityType="Model_theFoodDb.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryProductSet" EntityType="Model_theFoodDb.Store.CategoryProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IngridientSet" EntityType="Model_theFoodDb.Store.IngridientSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRecipeSet" EntityType="Model_theFoodDb.Store.UserRecipeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserPostSet" EntityType="Model_theFoodDb.Store.UserPostSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubscriberSet" EntityType="Model_theFoodDb.Store.SubscriberSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PictureSet" EntityType="Model_theFoodDb.Store.PictureSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFavoritRecipeSet" EntityType="Model_theFoodDb.Store.UserFavoritRecipeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RecipeCategoryRecipe" Association="Model_theFoodDb.Store.RecipeCategoryRecipe">
+      <End Role="Recipe" EntitySet="RecipeSet" />
+      <End Role="CategoryRecipe" EntitySet="CategoryRecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="EatingTimeRecipe" Association="Model_theFoodDb.Store.EatingTimeRecipe">
+      <End Role="EatingTime" EntitySet="EatingTimeSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserComment" Association="Model_theFoodDb.Store.UserComment">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <AssociationSet Name="CommentRecipe" Association="Model_theFoodDb.Store.CommentRecipe">
+      <End Role="Comment" EntitySet="CommentSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryProductProduct" Association="Model_theFoodDb.Store.CategoryProductProduct">
+      <End Role="CategoryProduct" EntitySet="CategoryProductSet" />
+      <End Role="Product" EntitySet="ProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="IngridientProduct" Association="Model_theFoodDb.Store.IngridientProduct">
+      <End Role="Ingridient" EntitySet="IngridientSet" />
+      <End Role="Product" EntitySet="ProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="IngridientRecipe" Association="Model_theFoodDb.Store.IngridientRecipe">
+      <End Role="Ingridient" EntitySet="IngridientSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserRecipeUser" Association="Model_theFoodDb.Store.UserRecipeUser">
+      <End Role="UserRecipe" EntitySet="UserRecipeSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserRecipeRecipe" Association="Model_theFoodDb.Store.UserRecipeRecipe">
+      <End Role="UserRecipe" EntitySet="UserRecipeSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserPostUser" Association="Model_theFoodDb.Store.UserPostUser">
+      <End Role="UserPost" EntitySet="UserPostSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="SubscriberUser" Association="Model_theFoodDb.Store.SubscriberUser">
+      <End Role="Subscriber" EntitySet="SubscriberSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="CommentUserPost" Association="Model_theFoodDb.Store.CommentUserPost">
+      <End Role="Comment" EntitySet="CommentSet" />
+      <End Role="UserPost" EntitySet="UserPostSet" />
+    </AssociationSet>
+    <AssociationSet Name="PictureRecipe" Association="Model_theFoodDb.Store.PictureRecipe">
+      <End Role="Picture" EntitySet="PictureSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserFavoritRecipeUser" Association="Model_theFoodDb.Store.UserFavoritRecipeUser">
+      <End Role="UserFavoritRecipe" EntitySet="UserFavoritRecipeSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserFavoritRecipeRecipe" Association="Model_theFoodDb.Store.UserFavoritRecipeRecipe">
+      <End Role="UserFavoritRecipe" EntitySet="UserFavoritRecipeSet" />
+      <End Role="Recipe" EntitySet="RecipeSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ConfirmPerson" Type="bit" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Photo" Type="tinyint" Nullable="true" />
+  </EntityType>
+  <EntityType Name="RecipeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LikeDislike" Type="int" Nullable="false" />
+    <Property Name="RatingRecipe" Type="int" Nullable="false" />
+    <Property Name="CookingTime" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="CategoryRecipeId" Type="int" Nullable="false" />
+    <Property Name="EatingTimeId" Type="int" Nullable="false" />
+    <Property Name="UniqueName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryRecipeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EatingTimeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CommentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RecipeId" Type="int" Nullable="false" />
+    <Property Name="UserPostId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PriceOnProduct" Type="decimal" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CategoryProductId" Type="int" Nullable="false" />
+    <Property Name="ImageData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryProductSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngridientSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="RecipeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRecipeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RecipeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPostSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubscriberSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserSubscriberID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PictureSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureFile" Type="tinyint" Nullable="false" />
+    <Property Name="RecipeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFavoritRecipeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RecipeId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RecipeCategoryRecipe">
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="*" />
+    <End Role="CategoryRecipe" Type="Model_theFoodDb.Store.CategoryRecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryRecipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recipe">
+        <PropertyRef Name="CategoryRecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EatingTimeRecipe">
+    <End Role="EatingTime" Type="Model_theFoodDb.Store.EatingTimeSet" Multiplicity="1" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EatingTime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Recipe">
+        <PropertyRef Name="EatingTimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserComment">
+    <End Role="User" Type="Model_theFoodDb.Store.UserSet" Multiplicity="1" />
+    <End Role="Comment" Type="Model_theFoodDb.Store.CommentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentRecipe">
+    <End Role="Comment" Type="Model_theFoodDb.Store.CommentSet" Multiplicity="*" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryProductProduct">
+    <End Role="CategoryProduct" Type="Model_theFoodDb.Store.CategoryProductSet" Multiplicity="1" />
+    <End Role="Product" Type="Model_theFoodDb.Store.ProductSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IngridientProduct">
+    <End Role="Ingridient" Type="Model_theFoodDb.Store.IngridientSet" Multiplicity="*" />
+    <End Role="Product" Type="Model_theFoodDb.Store.ProductSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingridient">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IngridientRecipe">
+    <End Role="Ingridient" Type="Model_theFoodDb.Store.IngridientSet" Multiplicity="*" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingridient">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRecipeUser">
+    <End Role="UserRecipe" Type="Model_theFoodDb.Store.UserRecipeSet" Multiplicity="*" />
+    <End Role="User" Type="Model_theFoodDb.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRecipe">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRecipeRecipe">
+    <End Role="UserRecipe" Type="Model_theFoodDb.Store.UserRecipeSet" Multiplicity="*" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRecipe">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPostUser">
+    <End Role="UserPost" Type="Model_theFoodDb.Store.UserPostSet" Multiplicity="*" />
+    <End Role="User" Type="Model_theFoodDb.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserPost">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubscriberUser">
+    <End Role="Subscriber" Type="Model_theFoodDb.Store.SubscriberSet" Multiplicity="*" />
+    <End Role="User" Type="Model_theFoodDb.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscriber">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentUserPost">
+    <End Role="Comment" Type="Model_theFoodDb.Store.CommentSet" Multiplicity="*" />
+    <End Role="UserPost" Type="Model_theFoodDb.Store.UserPostSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserPost">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserPostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PictureRecipe">
+    <End Role="Picture" Type="Model_theFoodDb.Store.PictureSet" Multiplicity="*" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Picture">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFavoritRecipeUser">
+    <End Role="UserFavoritRecipe" Type="Model_theFoodDb.Store.UserFavoritRecipeSet" Multiplicity="*" />
+    <End Role="User" Type="Model_theFoodDb.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFavoritRecipe">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFavoritRecipeRecipe">
+    <End Role="UserFavoritRecipe" Type="Model_theFoodDb.Store.UserFavoritRecipeSet" Multiplicity="*" />
+    <End Role="Recipe" Type="Model_theFoodDb.Store.RecipeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFavoritRecipe">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model_theFoodDb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model_theFoodDbContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="Model_theFoodDb.User" />
+          <EntitySet Name="RecipeSet" EntityType="Model_theFoodDb.Recipe" />
+          <EntitySet Name="CategoryRecipeSet" EntityType="Model_theFoodDb.CategoryRecipe" />
+          <AssociationSet Name="RecipeCategoryRecipe" Association="Model_theFoodDb.RecipeCategoryRecipe">
+            <End Role="Recipe" EntitySet="RecipeSet" />
+            <End Role="CategoryRecipe" EntitySet="CategoryRecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="EatingTimeSet" EntityType="Model_theFoodDb.EatingTime" />
+          <AssociationSet Name="EatingTimeRecipe" Association="Model_theFoodDb.EatingTimeRecipe">
+            <End Role="EatingTime" EntitySet="EatingTimeSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="CommentSet" EntityType="Model_theFoodDb.Comment" />
+          <AssociationSet Name="UserComment" Association="Model_theFoodDb.UserComment">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Comment" EntitySet="CommentSet" />
+          </AssociationSet>
+          <AssociationSet Name="CommentRecipe" Association="Model_theFoodDb.CommentRecipe">
+            <End Role="Comment" EntitySet="CommentSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="ProductSet" EntityType="Model_theFoodDb.Product" />
+          <EntitySet Name="CategoryProductSet" EntityType="Model_theFoodDb.CategoryProduct" />
+          <AssociationSet Name="CategoryProductProduct" Association="Model_theFoodDb.CategoryProductProduct">
+            <End Role="CategoryProduct" EntitySet="CategoryProductSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          <EntitySet Name="IngridientSet" EntityType="Model_theFoodDb.Ingridient" />
+          <AssociationSet Name="IngridientProduct" Association="Model_theFoodDb.IngridientProduct">
+            <End Role="Ingridient" EntitySet="IngridientSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          <AssociationSet Name="IngridientRecipe" Association="Model_theFoodDb.IngridientRecipe">
+            <End Role="Ingridient" EntitySet="IngridientSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="UserRecipeSet" EntityType="Model_theFoodDb.UserRecipe" />
+          <AssociationSet Name="UserRecipeUser" Association="Model_theFoodDb.UserRecipeUser">
+            <End Role="UserRecipe" EntitySet="UserRecipeSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserRecipeRecipe" Association="Model_theFoodDb.UserRecipeRecipe">
+            <End Role="UserRecipe" EntitySet="UserRecipeSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="UserPostSet" EntityType="Model_theFoodDb.UserPost" />
+          <AssociationSet Name="UserPostUser" Association="Model_theFoodDb.UserPostUser">
+            <End Role="UserPost" EntitySet="UserPostSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <EntitySet Name="SubscriberSet" EntityType="Model_theFoodDb.Subscriber" />
+          <AssociationSet Name="SubscriberUser" Association="Model_theFoodDb.SubscriberUser">
+            <End Role="Subscriber" EntitySet="SubscriberSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="CommentUserPost" Association="Model_theFoodDb.CommentUserPost">
+            <End Role="Comment" EntitySet="CommentSet" />
+            <End Role="UserPost" EntitySet="UserPostSet" />
+          </AssociationSet>
+          <EntitySet Name="PictureSet" EntityType="Model_theFoodDb.Picture" />
+          <AssociationSet Name="PictureRecipe" Association="Model_theFoodDb.PictureRecipe">
+            <End Role="Picture" EntitySet="PictureSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+          <EntitySet Name="UserFavoritRecipeSet" EntityType="Model_theFoodDb.UserFavoritRecipe" />
+          <AssociationSet Name="UserFavoritRecipeUser" Association="Model_theFoodDb.UserFavoritRecipeUser">
+            <End Role="UserFavoritRecipe" EntitySet="UserFavoritRecipeSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserFavoritRecipeRecipe" Association="Model_theFoodDb.UserFavoritRecipeRecipe">
+            <End Role="UserFavoritRecipe" EntitySet="UserFavoritRecipeSet" />
+            <End Role="Recipe" EntitySet="RecipeSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="SecondName" Type="String" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Model_theFoodDb.UserComment" FromRole="User" ToRole="Comment" />
+          <Property Name="Status" Type="String" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Mobile" Type="String" Nullable="true" />
+          <Property Name="ConfirmPerson" Type="Boolean" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="UserRecipe" Relationship="Model_theFoodDb.UserRecipeUser" FromRole="User" ToRole="UserRecipe" />
+          <NavigationProperty Name="UserPost" Relationship="Model_theFoodDb.UserPostUser" FromRole="User" ToRole="UserPost" />
+          <NavigationProperty Name="Subscriber" Relationship="Model_theFoodDb.SubscriberUser" FromRole="User" ToRole="Subscriber" />
+          <Property Name="Photo" Type="Byte" Nullable="true" />
+          <NavigationProperty Name="UserFavoritRecipe" Relationship="Model_theFoodDb.UserFavoritRecipeUser" FromRole="User" ToRole="UserFavoritRecipe" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="LikeDislike" Type="Int32" Nullable="false" />
+          <Property Name="RatingRecipe" Type="Int32" Nullable="false" />
+          <Property Name="CookingTime" Type="DateTime" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="CategoryRecipe" Relationship="Model_theFoodDb.RecipeCategoryRecipe" FromRole="Recipe" ToRole="CategoryRecipe" />
+          <Property Name="CategoryRecipeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EatingTime1" Relationship="Model_theFoodDb.EatingTimeRecipe" FromRole="Recipe" ToRole="EatingTime" />
+          <Property Name="EatingTimeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Model_theFoodDb.CommentRecipe" FromRole="Recipe" ToRole="Comment" />
+          <NavigationProperty Name="Ingridient" Relationship="Model_theFoodDb.IngridientRecipe" FromRole="Recipe" ToRole="Ingridient" />
+          <NavigationProperty Name="UserRecipe" Relationship="Model_theFoodDb.UserRecipeRecipe" FromRole="Recipe" ToRole="UserRecipe" />
+          <NavigationProperty Name="Picture" Relationship="Model_theFoodDb.PictureRecipe" FromRole="Recipe" ToRole="Picture" />
+          <NavigationProperty Name="UserFavoritRecipe" Relationship="Model_theFoodDb.UserFavoritRecipeRecipe" FromRole="Recipe" ToRole="UserFavoritRecipe" />
+          <Property Name="UniqueName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryRecipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.RecipeCategoryRecipe" FromRole="CategoryRecipe" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="RecipeCategoryRecipe">
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="*" />
+          <End Type="Model_theFoodDb.CategoryRecipe" Role="CategoryRecipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryRecipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="CategoryRecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EatingTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.EatingTimeRecipe" FromRole="EatingTime" ToRole="Recipe" />
+        </EntityType>
+        <Association Name="EatingTimeRecipe">
+          <End Type="Model_theFoodDb.EatingTime" Role="EatingTime" Multiplicity="1" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EatingTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="EatingTimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model_theFoodDb.UserComment" FromRole="Comment" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.CommentRecipe" FromRole="Comment" ToRole="Recipe" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserPost" Relationship="Model_theFoodDb.CommentUserPost" FromRole="Comment" ToRole="UserPost" />
+          <Property Name="UserPostId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserComment">
+          <End Type="Model_theFoodDb.User" Role="User" Multiplicity="1" />
+          <End Type="Model_theFoodDb.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CommentRecipe">
+          <End Type="Model_theFoodDb.Comment" Role="Comment" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PriceOnProduct" Type="Decimal" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <NavigationProperty Name="CategoryProduct" Relationship="Model_theFoodDb.CategoryProductProduct" FromRole="Product" ToRole="CategoryProduct" />
+          <Property Name="CategoryProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ingridient" Relationship="Model_theFoodDb.IngridientProduct" FromRole="Product" ToRole="Ingridient" />
+          <Property Name="ImageData" Type="Binary" Nullable="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Model_theFoodDb.CategoryProductProduct" FromRole="CategoryProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="CategoryProductProduct">
+          <End Type="Model_theFoodDb.CategoryProduct" Role="CategoryProduct" Multiplicity="1" />
+          <End Type="Model_theFoodDb.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ingridient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="Model_theFoodDb.IngridientProduct" FromRole="Ingridient" ToRole="Product" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.IngridientRecipe" FromRole="Ingridient" ToRole="Recipe" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="IngridientProduct">
+          <End Type="Model_theFoodDb.Ingridient" Role="Ingridient" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Product" Role="Product" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IngridientRecipe">
+          <End Type="Model_theFoodDb.Ingridient" Role="Ingridient" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingridient">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserRecipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Model_theFoodDb.UserRecipeUser" FromRole="UserRecipe" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.UserRecipeRecipe" FromRole="UserRecipe" ToRole="Recipe" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserRecipeUser">
+          <End Type="Model_theFoodDb.UserRecipe" Role="UserRecipe" Multiplicity="*" />
+          <End Type="Model_theFoodDb.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRecipe">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRecipeRecipe">
+          <End Type="Model_theFoodDb.UserRecipe" Role="UserRecipe" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRecipe">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Model_theFoodDb.UserPostUser" FromRole="UserPost" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Comment" Relationship="Model_theFoodDb.CommentUserPost" FromRole="UserPost" ToRole="Comment" />
+        </EntityType>
+        <Association Name="UserPostUser">
+          <End Type="Model_theFoodDb.UserPost" Role="UserPost" Multiplicity="*" />
+          <End Type="Model_theFoodDb.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPost">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Subscriber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Model_theFoodDb.SubscriberUser" FromRole="Subscriber" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserSubscriberID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SubscriberUser">
+          <End Type="Model_theFoodDb.Subscriber" Role="Subscriber" Multiplicity="*" />
+          <End Type="Model_theFoodDb.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscriber">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CommentUserPost">
+          <End Type="Model_theFoodDb.Comment" Role="Comment" Multiplicity="*" />
+          <End Type="Model_theFoodDb.UserPost" Role="UserPost" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="UserPost">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserPostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PictureFile" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.PictureRecipe" FromRole="Picture" ToRole="Recipe" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PictureRecipe">
+          <End Type="Model_theFoodDb.Picture" Role="Picture" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserFavoritRecipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Model_theFoodDb.UserFavoritRecipeUser" FromRole="UserFavoritRecipe" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recipe" Relationship="Model_theFoodDb.UserFavoritRecipeRecipe" FromRole="UserFavoritRecipe" ToRole="Recipe" />
+          <Property Name="RecipeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserFavoritRecipeUser">
+          <End Type="Model_theFoodDb.UserFavoritRecipe" Role="UserFavoritRecipe" Multiplicity="*" />
+          <End Type="Model_theFoodDb.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavoritRecipe">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserFavoritRecipeRecipe">
+          <End Type="Model_theFoodDb.UserFavoritRecipe" Role="UserFavoritRecipe" Multiplicity="*" />
+          <End Type="Model_theFoodDb.Recipe" Role="Recipe" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Recipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavoritRecipe">
+              <PropertyRef Name="RecipeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model_theFoodDbStoreContainer" CdmEntityContainer="Model_theFoodDbContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="ConfirmPerson" ColumnName="ConfirmPerson" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecipeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Recipe)">
+        <MappingFragment StoreEntitySet="RecipeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="LikeDislike" ColumnName="LikeDislike" />
+          <ScalarProperty Name="RatingRecipe" ColumnName="RatingRecipe" />
+          <ScalarProperty Name="CookingTime" ColumnName="CookingTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CategoryRecipeId" ColumnName="CategoryRecipeId" />
+          <ScalarProperty Name="EatingTimeId" ColumnName="EatingTimeId" />
+          <ScalarProperty Name="UniqueName" ColumnName="UniqueName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryRecipeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.CategoryRecipe)">
+        <MappingFragment StoreEntitySet="CategoryRecipeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EatingTimeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.EatingTime)">
+        <MappingFragment StoreEntitySet="EatingTimeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Comment)">
+        <MappingFragment StoreEntitySet="CommentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+          <ScalarProperty Name="UserPostId" ColumnName="UserPostId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Product)">
+        <MappingFragment StoreEntitySet="ProductSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PriceOnProduct" ColumnName="PriceOnProduct" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryProductId" ColumnName="CategoryProductId" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.CategoryProduct)">
+        <MappingFragment StoreEntitySet="CategoryProductSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngridientSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Ingridient)">
+        <MappingFragment StoreEntitySet="IngridientSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRecipeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.UserRecipe)">
+        <MappingFragment StoreEntitySet="UserRecipeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPostSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.UserPost)">
+        <MappingFragment StoreEntitySet="UserPostSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriberSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Subscriber)">
+        <MappingFragment StoreEntitySet="SubscriberSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserSubscriberID" ColumnName="UserSubscriberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PictureSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.Picture)">
+        <MappingFragment StoreEntitySet="PictureSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PictureFile" ColumnName="PictureFile" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFavoritRecipeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model_theFoodDb.UserFavoritRecipe)">
+        <MappingFragment StoreEntitySet="UserFavoritRecipeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb21848b58b1452da462eefc2e1ba196" Name="Diagram1">
+        <EntityTypeShape EntityType="Model_theFoodDb.User" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Recipe" Width="1.5" PointX="8" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.CategoryRecipe" Width="1.5" PointX="10.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.EatingTime" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Comment" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Product" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.CategoryProduct" Width="1.5" PointX="9.625" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Ingridient" Width="1.5" PointX="12" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.UserRecipe" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.UserPost" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Subscriber" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.Picture" Width="1.5" PointX="5.375" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model_theFoodDb.UserFavoritRecipe" Width="1.5" PointX="4.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="Model_theFoodDb.RecipeCategoryRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.EatingTimeRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserComment" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.CommentRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.CategoryProductProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.IngridientProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.IngridientRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserRecipeUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserRecipeRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserPostUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.SubscriberUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.CommentUserPost" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.PictureRecipe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserFavoritRecipeUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Model_theFoodDb.UserFavoritRecipeRecipe" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

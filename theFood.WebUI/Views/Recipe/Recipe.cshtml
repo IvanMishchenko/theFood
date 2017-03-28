@@ -1,0 +1,54 @@
+﻿
+@using System.Linq
+@model System.Collections.Generic.IEnumerable<theFood.Domain.DbModel.Recipe>
+
+
+@foreach (var r in Model)
+{
+    <div class="recipe">
+
+        <div class="logoBest">
+            <!--nothing-->
+        </div>
+
+        <div class="recipeTitle">
+            <h1>@Html.ActionLink(r.Name, "CurrentRecipe", new {r.Id})</h1>
+        </div>
+
+        <div class="recipeImg">
+            <img src="~/Content/images/Bljuda-iz-ryby.jpg"  alt="imginRecipe">
+        </div>
+
+        <div class="recipeProduct">
+            @foreach (var p in r.Ingridient)
+            {
+                if (r.Id == p.RecipeId)
+                {
+                    <img id="recipeImg" src="@Url.Action("GetImage", "Admin", new {p.Product.Id})" alt="Image"/>
+                }
+            }
+        </div>
+
+        <div class="description">
+            @r.Text
+        </div>
+
+        <div class="recipeFooter">
+            <div class="author">
+                <h4>Author:NoName</h4>
+            </div>
+            <div class="commentRecipe">
+              <h4>Comment:@r.Comment.LongCount()</h4> 
+            </div>
+            <div class="recipeTime"></div>
+            <h4>Time:@r.EatingTime1.Name</h4>
+            <div class="likeDislike">
+                <h4>LikeDislike:@r.LikeDislike</h4>
+            </div>
+
+            
+        </div>
+
+    </div>
+}
+

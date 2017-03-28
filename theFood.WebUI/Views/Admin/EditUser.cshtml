@@ -1,0 +1,17 @@
+﻿@model theFood.Domain.DbModel.User
+
+@{
+    ViewBag.Title = "User: " + @Model.FirstName+" "+@Model.SecondName;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("EditUser", "Admin"))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", "Users");
+}
+

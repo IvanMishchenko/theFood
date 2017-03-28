@@ -1,0 +1,20 @@
+﻿@model theFood.WebUI.Models.CartModel
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your cart</h2>
+
+@foreach (var x in Model.Cart.Lines)
+{
+    <td>Name: @x.Product.Name</td>
+    <br/>
+    <td>Quantity: @x.Quantity</td>
+    <br/>
+    <br />  
+    <br />
+}
+
+<p align="center">@Html.ActionLink("Continue", "Index", "Home")</p>

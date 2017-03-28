@@ -1,0 +1,82 @@
+﻿@using System.Linq
+@model System.Collections.Generic.IEnumerable<theFood.Domain.DbModel.Product>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div id="myCarousel" class="carousel slide">
+
+    <div class="carousel-inner">
+        @{
+
+            var count = 0;
+            var c = 0;
+            for (var y = 1; y <= ViewBag.CountCarouselSlider; y++)
+            {
+
+                var teg = (y == 1) ? "item active" : "item";
+                <div class="@teg">
+
+                    @for (var i = 1; i <= 3; i++)
+                    {
+                        <div class=" row-fluid">
+                            @for (var j = 0; j <= 5; j++)
+                            {
+
+                                if (count >= Model.Count())
+                                {
+                                    break;
+                                }
+                                c = count;
+
+                                <div class="span2">
+                                    <form method="post" id="addProductForm" action="@Url.Action("AddToCart", "Cart")" class="thumbnail1">
+                                        @Html.Hidden("productId", Model.ElementAt(c).Id)
+                                        <img src="@Url.Action("GetImage", "Admin", new {Model.ElementAt(c).Id})" alt="Image" style="max-width: 100%;" />
+                                        <input type="submit" name="" value="" class="productButton" />
+                                    </form>
+                                </div>
+
+                                count++;
+                            }
+                        </div>
+
+                    }
+                </div>
+            }
+        }
+
+       
+    </div>
+   
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
+   
+
+</div><!--/myCarousel-->
+ <!--begin checked products-->
+<div class="miniProductPanel">
+
+    <form method="post" id="clearCartButton" action="@Url.Action("ClearCart", "Cart")" hidden>
+        <input type="submit" name="" value="" class="clearButton" />
+    </form>
+
+    <div id="cartPanel" hidden>@{Html.RenderAction("Index", "Cart");}</div>
+ 
+</div><!--end checked products-->
+
+ 
+<!--begin gotorecipebutton-->
+<div class="gotorecipeButton">
+    <form method="post" id="generateRecipe" action="@Url.Action("SearchRecipe", "Recipe")">
+        <input type="submit" name="" value="" class="recipeButton" />
+    </form>
+</div><!--end gotorecipebutton-->
+
+

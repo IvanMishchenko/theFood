@@ -1,0 +1,25 @@
+﻿@model theFood.Domain.DbModel.Recipe
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="currentRecipe">
+    <h2>CurrentRecipe</h2>
+    <h3>@Model.Name</h3>
+    <h4>@Model.Text</h4>
+    @foreach (var product in Model.Ingridient)
+    {
+        @product.Product.Name
+    }
+    @Model.LikeDislike
+    @foreach (var coment in Model.Comment)
+    {
+        @coment.UserPost
+        @coment.User.FirstName
+        @coment.Text
+    }
+    <a href="/">Back</a>
+</div>

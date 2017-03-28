@@ -1,0 +1,467 @@
+﻿.header{
+ width:100%; 
+ height:77px;
+ z-index: 4;
+
+background-color: #fff;
+border-bottom: 1px solid rgba(56, 24, 24,.0975);
+
+ }
+header .logo{
+	float: left;
+    width:10%;   
+     margin-left:220px;
+    margin-top: 20px;
+
+}
+.imgLogo{
+	width:88%;
+ position : relative ; 	   
+            min-width: 100px;
+}
+header .nav{
+float: right;
+    width:10%;
+    margin-right: 130px;
+    margin-top: 32px;
+    	  
+}
+.imguser{
+	width:10%;
+ 	position : relative ; 
+min-width: 15px;
+}
+
+
+#search {
+  /* устанавливаем ширину формы */
+  width: 235px;
+  height: 29px;
+  margin: auto;
+  margin-top: 30px;
+
+}
+
+/* делаем инпуты плавающими, чтобы убрать лишние отступы,
+** и отключаем бордюры */
+#search input {
+  float: left;
+  border: none;
+
+}
+
+/* стили для поля ввода */
+#search .input {
+  width: 183px;
+  height: 28px;
+  /* внутренний отступ справа (37px) делаем больше левого,
+  ** т.к. там будет размещена кнопка отправки	*/
+  padding: 0 37px 1px 15px;
+  background: url(../images/searchfield.png) no-repeat;
+	outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+    color: #555;
+  font: 15px/28px Tahoma, Arial, sans-serif;
+border: none;
+ 
+}
+
+
+/* приходится использовать хак для FireFox
+** для вертикального выравнивания текста,
+** т.к. у него свои особые представления об этом */
+@-moz-document url-prefix() {
+  #search .input {
+    height: 27px;
+    padding-bottom: 2px;
+  }
+}
+
+ /*меняем оформление поля ввода при фокусе */
+#search .input:focus {
+
+  color: #3f0e0e;
+ outline: none; 
+
+}
+
+/* оформляем кнопку отправки */
+#search .submit {
+  width: 37px;
+  height: 29px;
+  cursor: pointer;
+
+position: relative;
+  /* смещаем кнопку влево на собственную ширину,
+  ** чтобы она оказалась над полем ввода */
+  margin-left: -37px;
+
+  /* по-нормальному, здесь достаточно было бы указать background: none;
+  ** но приходится указывать фон из-за бага в IE */
+  background: url(../images/lorneta.png);
+  border: none;
+  outline: none;
+}
+
+#generateRecipe {
+margin-top: 15px;
+}
+#generateRecipe .recipeButton {
+  width: 200px;
+  height: 69px;
+  background: url(../images/Buttongotorecipe1.png) no-repeat;  
+ margin-top: auto;
+ margin-left: 40.65%;
+
+  outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+border: none;
+}
+#generateRecipe .recipeButton:hover {
+    background-position: 0 -69px; /* Смещение фона */
+   }
+
+
+
+#addProductForm .productButton {
+
+  width: 151px;
+  height: 145px;
+    margin-top: -194px;
+    margin-left: 12px;
+    margin-right: auto;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.0);
+    outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+    border: none;
+    border-radius: 10px;
+ 
+  
+
+}
+
+
+#addProductForm .productButton:hover {
+     background: #fff;
+    background: rgba(255, 255, 255, 0.5);
+
+   }
+
+
+/* Removes the default 20px margin and creates some padding space for the indicators and controls */
+.carousel {
+   margin-bottom: 0;
+   padding: 0 40px 30px 40px;
+   border: none;
+   height: 480px;
+}
+/* Reposition the controls slightly */
+.carousel-control {
+	left: -12px;
+}
+.carousel-control.right {
+	right: -12px;
+}
+/* Changes the position of the indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: 20px;
+}
+/* Changes the colour of the indicators */
+.carousel-indicators li {
+	background: #c0c0c0;
+	background-color: rgba(53, 37, 37, 0.25);
+}
+.carousel-indicators .active {
+background: #333333;
+}
+.carousel-inner {
+    overflow: hidden;
+      padding-right: 25px;
+      margin-left: -15px;
+   
+}
+
+#wrapper{
+	    margin-top: 20px;
+}
+.container{
+	margin-top: 0px;
+width: 100%;
+}
+.well1{
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    border: none;
+    height: 485px;
+}
+
+
+.thumbnail1 {
+    display: block;
+    padding: 4px;
+    line-height: 20px;
+    width: 115%;
+    margin-bottom: -30px;
+}
+.thumbnail1>img {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.imgfork{
+	width: 70px;
+	float: left;
+	margin-left: -65px;
+	/*margin-top: -85%;*/
+}
+.imgspoon{
+	width: 115px;
+	float: right;
+	 margin-right: -100px;
+	/*margin-top: -85%;*/
+	 
+}
+
+.recipe {
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(63, 14, 14);
+  background-color: rgb(255, 255, 255);
+  
+  margin: auto; 
+  width: 731px;
+  height: 308px;  
+
+
+}
+.recipe img{
+  width: 300px;
+  height: 300px; 
+  margin-left: 20px;
+  margin-top: 22px;
+}
+
+  .description{
+	 color: #555;
+  font: 15px/28px Tahoma, Arial, sans-serif;
+    width: 430px;
+    height: 120px;
+ text-align: left;
+  margin-top: 78px;
+  margin-left: 284px;
+ position : relative ;     
+}
+
+.listRecipes{
+	margin: auto;
+	margin-top: 25px;
+}
+
+.listRecipes .recipe{
+margin-top: 30px;
+}
+.controllist{
+	margin-top: 203px;
+	border-bottom: 2px solid rgba(56, 24, 24,.0975);
+	border-top: 2px solid rgba(56, 24, 24,.0975);
+height: 50px;
+}
+#listbuttom{
+width: 26px;
+
+margin-left: 44%;
+margin-top: 12px;
+  }
+#listbuttom .imglistbutton{
+	 background: url(../images/listiconbutton.png) no-repeat;  
+ margin-top: auto;
+  border: none;
+  width: 27px;
+height:27px;
+outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+}
+#listbuttom .imglistbutton:hover {
+    background-position: 0 -28px;
+}
+
+
+
+#cellListbuttom{
+width: 27px;
+
+margin-left: 55%;
+margin-top: -47px;
+  }
+#cellListbuttom .imgcellListbutton{
+   background: url(../images/cellList.png) no-repeat;  
+ margin-top: auto;
+  border: none;
+  width: 27px;
+height:27px;
+outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+}
+#cellListbuttom .imgcellListbutton:hover {
+    background-position: 0 -28px;
+}
+
+#nextRecipeButton .nextLoadRecipeButton {
+  width: 248px;
+  height: 86px;
+  background: url(../images/ButtonNext.png) no-repeat;  
+ margin-top: 20px;
+ margin-left: 43%;
+ margin-bottom: auto;
+ outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+border: none;
+}
+#nextRecipeButton .nextLoadRecipeButton:hover {
+    background-position: 0 -86px; /* Смещение фона */
+   }
+#middle{
+  margin: auto;
+}
+#footer{
+margin-top: 220px;
+}
+.footerTop{
+  background-color: #434c51;
+    display: inline;
+    float: left;
+    padding: 15px 0;
+    width: 100%;
+    height: 250px;
+}
+
+#clearCartButton{
+  margin-left: 32%;
+  margin-top: -8%;
+ z-index: 5;
+   width: 400px;
+  height: 24px;
+}
+#clearCartButton .clearButton {
+  width: 400px;
+  height: 24px;
+  background: url(../images/ClearButton.png) no-repeat;  
+  outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+border: none;
+}
+#clearCartButton .clearButton:hover {
+    background-position: 0 -24px; /* Смещение фона */
+   }
+
+#cartPanel{
+  margin:auto;
+  margin-left: 31%;
+  margin-top: -1.7%;
+  width: 450px;
+  margin-bottom: 200px;
+
+}
+#miniProduct {
+ float:left;
+ height: 50px;
+     margin-bottom: 0px;
+}
+#miniProduct .miniProductButton {
+     width: 42px;
+     height: 42px;
+
+    margin-left: -50px;
+    margin-right: auto;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.0);
+    outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+    border: none;
+    border-radius: 5px;
+    position : relative ;
+    
+}
+
+    #miniProduct .miniProductButton:hover {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
+    }
+
+ 
+
+    .currentRecipe {
+        width: 100px;
+        height: 520px;
+    }
+    .miniProductPanel {
+        margin-top: 100px;
+       
+    }
+    .gotorecipeButton {
+        margin: auto;
+   
+    }
+    .recipeProduct {
+        float: left;
+        margin-left: 20px;
+        margin-top: 0px;
+  
+    }
+    #recipeImg {
+        width: 50px;
+        height: 50px;
+        margin-left: auto;
+        
+    }
+    .logoBest {
+        float: left;
+         width: 50px;
+        height: 50px;
+
+    }
+    .recipeTitle {
+        margin: auto;
+        width: 500px;
+        height: 40px;
+        text-align: center;
+    }
+    .recipeImg>img {
+        float: left;
+        width: 230px;
+        height: 200px;
+        margin-left: 29px;
+        margin-top: auto;   
+    }
+    .recipeFooter {
+        margin: auto;
+		margin-top: auto;
+        width: 700px;
+        height: 40px;
+    }
+    .author {
+        float: left;
+    }
+    .commentRecipe {
+        float: left;
+    }
+    .recipeTime {
+        float: left;
+    }
+    .likeDislike {
+        float: left;
+    }

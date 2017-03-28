@@ -1,0 +1,23 @@
+﻿@model theFood.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    
+}
+
+
+<head>
+    
+</head>
+<body>
+<div class="accountEnter">
+    @using (Html.BeginForm("Login", "Account"))
+    {
+        @Html.ValidationSummary(true)
+        @Html.EditorForModel()
+        <p><input type="submit" value="Login" /></p>
+    }
+</div>
+</body>
+

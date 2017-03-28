@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Admin panel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    
+</head>
+<body>
+    <div class="panelButtom">
+        <p class="listButton">@Html.ActionLink("Recipes", "Recipe","Admin")</p>
+        <p class="listButton">@Html.ActionLink("Products", "Product", "Admin")</p>
+        <p class="listButton">@Html.ActionLink("Users", "Users","Admin")</p>
+    </div>
+</body>

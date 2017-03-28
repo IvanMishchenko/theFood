@@ -1,0 +1,18 @@
+﻿
+@model theFood.WebUI.Models.CartModel
+@{
+
+    foreach (var x in Model.Cart.Lines)
+    {
+       
+    <form method="post" id="miniProduct" action="@Url.Action("RemoveProduct", "Cart")" >
+        @Html.Hidden("productId", x.Product.Id)
+        <img width="50" height="50" src="@Url.Action("GetImage", "Admin", new {x.Product.Id})" alt="Image" />
+        <input type="submit" name="" value="" class="miniProductButton" />
+    </form>
+
+    }
+}
+
+
+

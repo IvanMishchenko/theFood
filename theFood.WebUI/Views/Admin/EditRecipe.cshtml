@@ -1,0 +1,41 @@
+﻿@model theFood.WebUI.Models.RecipeModel
+
+@{
+    ViewBag.Title = "Recipe: " + @Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+@using (Html.BeginForm("EditRecipe", "Admin"))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorForModel()
+
+    <div>
+        <h4>
+            Category: @Html.DropDownList("categoryRecipeId", Model.CategoryRecipeList)
+        </h4>
+    </div>
+    <div>
+        <h4>
+            Eat time: @Html.DropDownList("eatTimeId", Model.EatingTimeList)
+        </h4>
+    </div>
+    <br/>
+
+    <div>
+        @foreach(var a in Model.Products)
+        {
+            <div>
+                <label><input type="checkbox" name="checkedValues" value="@a.Id" checked="@a.IsCheckBox">@a.Name</label> <br/>
+           </div>
+             
+        }
+    </div>
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel", "Recipe", "Admin");
+}
+
+
+

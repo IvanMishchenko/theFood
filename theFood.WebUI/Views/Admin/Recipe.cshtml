@@ -1,0 +1,32 @@
+﻿@model System.Collections.Generic.IEnumerable<theFood.Domain.DbModel.Recipe>
+
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>All Recipes</h2>
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+       
+    </tr> @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@Html.ActionLink(item.Name, "EditRecipe", new { item.Id })</td>
+
+            <td>
+                @using (Html.BeginForm("DeleteRecipe", "Admin"))
+                {
+                    @Html.Hidden("Id", item.Id)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<p>@Html.ActionLink("Add a new recipe", "CreateRecipe")</p> 
+<p>@Html.ActionLink("Back", "Index", "Admin")</p>
